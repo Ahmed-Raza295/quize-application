@@ -1,0 +1,97 @@
+*{
+    padding:0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Baloo Paaji 2", sans-serif;
+}
+body{
+    font-family: "Baloo Paaji 2", sans-serif;
+}
+.nav{
+display: flex;
+justify-content: space-between;
+padding: 15px 30px;
+    background-color: #F58429;
+    align-items: center;
+}
+.nav h1{
+font-size: 2.5vw;
+    color: white;
+}
+.hero-section{
+text-align: center;
+text-transform: capitalize;
+margin-top: 5rem;
+
+}
+.hero-section h1{
+font-size: 5vw;
+font-weight: 300;
+color: #F58429;
+
+}
+.hero-section h2{
+font-size: 4vw;
+margin-top: 3rem;
+font-weight: 300;
+}
+.hero-section p {
+    margin-top: 2rem;
+    font-size: 1rem;
+    opacity: 0.7;
+}
+.sign-up-section{
+text-transform: capitalize ;
+    text-align: center;
+    margin-top: 2rem;
+}
+.sign-up-section button{
+border:1px solid #F58429;
+background-color: transparent;
+padding: 5px 25px;
+margin-top: 10px;
+}
+
+.sign-up-section button:hover{
+background-color: #F58429;
+color: white;
+transition: all 0.4s ;
+}
+
+.sign-up-page{
+width: 450px;
+position: absolute;
+top: 15%;
+left: 40%;
+right: 50%;
+border-radius: 10px;
+background-color: white;
+display: none;
+padding: 10px;
+text-transform: capitalize;
+}
+.login-page{
+    width: 400px;
+    position: absolute;
+    top: 15%;
+    left: 40%;
+    right: 50%;
+    border-radius: 10px;
+    background-color: white;
+    display: none;
+    padding: 10px;
+    text-transform: capitalize; 
+}
+.close{
+    display: flex;
+    align-items: center;
+    /* gap: 1.5rem; */
+}
+.login-close-btn{
+    position: relative;
+    right: -40%;
+}
+.sign-up-close-btn{
+position: relative;
+right: -5%;
+}
