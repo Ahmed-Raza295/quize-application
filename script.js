@@ -44,10 +44,16 @@ var option2 = document.getElementById("secondRadio");
 var option3 = document.getElementById("thirdRadio");
 var option4 = document.getElementById("fourthRadio");
 
+let input = document.getElementsByName("listGroupRadio")
+
+function disSelect(){
+    for(let i =0 ; input.length; i++){
+    input[i].checked = false;
+    }
+}
 
 let questionCount = 0
 continueBtn.addEventListener("click",()=>{
-  let input = document.getElementsByName("listGroupRadio")
 questionHtml.innerHTML = htmlQuiz[0].question;
 label1.innerHTML = htmlQuiz[questionCount].option1;
 label2.innerHTML = htmlQuiz[questionCount].option2;
@@ -60,13 +66,8 @@ option3.value = htmlQuiz[questionCount].option3;
 option4.value = htmlQuiz[questionCount].option4;
 
 
-// for(let i =0 ; input.length; i++){
-// input.checked = false
-
-
-// }
 questionCount++
-
+disSelect()
 })
 
 
