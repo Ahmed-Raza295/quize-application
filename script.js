@@ -32,43 +32,113 @@ var htmlQuiz = [
       answer: "a",
     }];
 
-let continueBtn = document.querySelector(".btn");
-let questionHtml = document.querySelector(".question")
-let label1 = document.querySelector(".label1")
-let label2 = document.querySelector(".label2")
+let question = document.querySelector(".question");
+let label1 = document.querySelector(".label1");
+let label2 = document.querySelector(".label2");
 let label3 = document.querySelector(".label3");
 let label4 = document.querySelector(".label4");
 
- var option1 = document.getElementById("firstRadio");
-var option2 = document.getElementById("secondRadio");
-var option3 = document.getElementById("thirdRadio");
-var option4 = document.getElementById("fourthRadio");
+let option1 = document.querySelector("#firstRadio");
+let option2 = document.querySelector("#secondRadio");
+let option3 = document.querySelector("#thirdRadio");
+let option4 = document.querySelector("#fourthRadio");
 
+let quizeOptions = document.getElementsByName("listGroupRadio");
+let questionCount = 0;
+let score = 0;
+function renderQuestion (){ 
 
-let questionCount = 0
-continueBtn.addEventListener("click",()=>{
-  let input = document.getElementsByName("listGroupRadio")
-questionHtml.innerHTML = htmlQuiz[0].question;
+question.innerHTML = htmlQuiz[questionCount].question;
 label1.innerHTML = htmlQuiz[questionCount].option1;
 label2.innerHTML = htmlQuiz[questionCount].option2;
-label3.innerHTML = htmlQuiz[questionCount].option3;
-label4.innerHTML = htmlQuiz[questionCount].option4;
-
-option1.value = htmlQuiz[questionCount].option1;
-option2.value = htmlQuiz[questionCount].option2;
-option3.value = htmlQuiz[questionCount].option3;
-option4.value = htmlQuiz[questionCount].option4;
+ label3.innerHTML = htmlQuiz[questionCount].option3;
+ label4.innerHTML = htmlQuiz[questionCount].option4;
 
 
-// for(let i =0 ; input.length; i++){
-// input.checked = false
+ option1.value = htmlQuiz[questionCount].option1;
+  option2.value = htmlQuiz[questionCount].option2;
+  option3.value = htmlQuiz[questionCount].option3;
+  option4.value = htmlQuiz[questionCount].option4;
+}
+
+function deSelect() {
+  for (var i = 0; i < quizeOptions.length; i++) {
+    quizeOptions[i].checked = false;
+  }
+}
 
 
-// }
-questionCount++
+function next() {
+  var radioChecked = false;
+  for (var i = 0; i < quizeOptions.length; i++) {
+    // If value is checked
+    if (quizeOptions[i].checked) {
+      radioChecked = true;
+      
+      
+      // so check that selected option is equal to answer so increment the score
+      if (quizeOptions[i].value === htmlQuiz[questionCount].answer) {
+        score++;
+        console.log(score);
+      }
+    }
+  }
 
-})
+if(radioChecked === false){
+  Swal.fire({
+    icon: "error",
+    title: "No Option Selected",
+   
+    
+  });
+}else{
+
+if (questionCount < htmlQuiz.length -1) {
+  questionCount++;
+  deSelect();
+  renderQuestion();
+}else{
+
+showResult();
+
+}
+}
+}
+
+let announcment = document.querySelector(".result-status")
+let totalQ = document.querySelector(".total-question");
+let correct = document.querySelector(".correct-question");
+let resultContainer = document.querySelector(".result-container")
+let quizeContainer = document.querySelector(".center")
+let percentageBox = document.querySelector(".percentage")
+function showResult (){
+let percentage = Math.round(score/ htmlQuiz.length * 100)
+resultStatus = ''
+
+if (percentage < 70) {
+  resultStatus = ' You are Failed ! Better Luck Next Time'
+announcment.classList.add("redText")
+resultContainer.classList.remove("d-none")
+resultContainer.classList.add("d-flex")
+}else{
+resultStatus = 'Congratulations ! You are Passed'
+resultContainer.classList.remove("d-none")
+resultContainer.classList.add("d-flex")
+announcment.classList.add("greenText")
+}
+
+resultContainer.style.display = "block"
+quizeContainer.style.display = "none"
+
+announcment.innerHTML = resultStatus;
+totalQ.innerHTML += `<span>${htmlQuiz.length}</span>`;
+correct.innerHTML += `<span>${score}</span>`
+percentageBox.innerHTML = `%${percentage}`
 
 
 
+}
 
+
+
+window.onload = renderQuestion();

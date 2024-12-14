@@ -45,13 +45,35 @@
             flex-direction: column;
         }
         .list-group{
-            width: 1000px;
+            width: 70vw;
         }
-        .list-group-item{
+        .list{
 margin: 1rem;
 border: 2px solid black !important;
 background-color: whitesmoke;
-
+        }
+        .list:hover{
+transition: all 0.1s ;
+            background-color:#f97a13;
+            color: white;
+        }
+    .result-container{
+margin-top: 3rem;
+        justify-content: center;
+        align-items: center;
+    }
+        .redText{
+color: red;
+        }
+        .greenText{
+            color: green;
+        }
+        .percentage-box h1{
+border: 1px solid black;
+width:75px;
+text-align: center;
+padding: 10px;
+border-radius:70% ;
         }
         </style>
 </head>
@@ -68,30 +90,31 @@ background-color: whitesmoke;
     <main>
         <div class="center">
         <ul class="list-group">
-            <li class="list-group-item">
+            <li class="list-group-item list">
                
                 <label class="form-check-label fs-1 question">HTML stands For</label>
               </li>
-              <li class="list-group-item">
-                <input class="form-check-input me-1" type="radio" name="listGroupRadio" value="" id="fourthRadio">
-                <label class="form-check-label fs-4 label1" for="fourthRadio">First radio</label>
-              </li>
-            <li class="list-group-item">
+             
+            <li class="list-group-item list">
               <input class="form-check-input me-1" type="radio" name="listGroupRadio" value="" id="firstRadio">
-              <label class="form-check-label fs-4 label2" for="firstRadio">First radio</label>
+              <label class="form-check-label fs-4 label1" for="firstRadio">First radio</label>
             </li>
-            <li class="list-group-item">
+            <li class="list-group-item list">
               <input class="form-check-input me-1" type="radio" name="listGroupRadio" value="" id="secondRadio">
-              <label class="form-check-label fs-4 label3" for="secondRadio">Second radio</label>
+              <label class="form-check-label fs-4 label2" for="secondRadio">Second radio</label>
             </li>
-            <li class="list-group-item">
+            <li class="list-group-item list">
               <input class="form-check-input me-1" type="radio" name="listGroupRadio" value="" id="thirdRadio">
-              <label class="form-check-label fs-4 label4" for="thirdRadio">Third radio</label>
+              <label class="form-check-label fs-4 label3" for="thirdRadio">Third radio</label>
             </li>
+            <li class="list-group-item list">
+                <input class="form-check-input me-1" type="radio" name="listGroupRadio" value="" id="fourthRadio">
+                <label class="form-check-label fs-4 label4" for="fourthRadio">First radio</label>
+              </li>
           </ul>
 
 
-          <button class="btn btn-primary px-5">Next</button>
+          <button class="btn btn-primary px-5" onclick="next()">Next</button>
         </div>
 
 
@@ -101,12 +124,27 @@ background-color: whitesmoke;
 </section>
 
 
+<section>
+    <main>
+<div class="result-container container d-none flex-column">
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item result-status fs-1">better Luck </li>
+        <li class="list-group-item total-question fs-4 d-flex justify-content-between">Total Question</li>
+        <li class="list-group-item correct-question fs-4 d-flex justify-content-between">Correct Answer</li>
+      </ul>
+
+      <div class="percentage-box d-flex justify-content-center">
+        <h1 class="percentage">33</h1>
+              </div>
+</div>
+
+    </main>
+</section>
 
 
 
 
-
-
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="script.js"></script>
 </body>
 </html>
